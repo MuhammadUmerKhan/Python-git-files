@@ -1,3 +1,4 @@
+from bs4 import BeautifulSoup
 from sklearn import linear_model
 from turtle import color
 import matplotlib.pyplot as plt
