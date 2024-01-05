@@ -22,4 +22,22 @@ import pandas as pd
 # df = df.drop(columns="Reference(s)")
 # df.head()
 
-url1 = "https://en.wikipedia.org/wiki/World_population"
+url = "https://en.wikipedia.org/wiki/World_population"
+req = requests.get(url)
+soup = BeautifulSoup(req.text, 'html')
+
+table = soup.find_all('table')[4]
+title = table.find('tr')
+heads = [titles.text.strip() for titles in title]
+sorted_head = [sorted for sorted in heads if sorted != '']
+df =pd.DataFrame(columns = sorted_head)
+df.columns
+columns_data = table.find_all('tr')
+for row in columns_data[2:]:
+    row_data = row.find_all('td')
+    individual_data = [data.text.strip() for data in row_data]
+    # print(individual_data)
+    length = len(df)
+    df.loc[length] = individual_data
+
+df.head()  
