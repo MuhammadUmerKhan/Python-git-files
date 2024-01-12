@@ -30,15 +30,15 @@ app.layout = html.Div(children=[
         html.Div(id='output-container', className='chart-grid', style={'display':'flex'}),
     ])
 ])
-@app.callback(
-    Output(component_id='select-year', component_property='value'),
-    Input(component_id='dropdown-statistics',component_property='value'))
+# @app.callback(
+#     Output(component_id='select-year', component_property='value'),
+#     Input(component_id='dropdown-statistics',component_property='value'))
 
-def update_input_container(yearly_statistics):
-    if yearly_statistics =='Yearly Statistics': 
-        return False
-    else: 
-        return True
+# def update_input_container(yearly_statistics):
+#     if yearly_statistics =='Yearly Statistics': 
+#         return False
+#     else: 
+#         return True
 
 @app.callback(
     Output(component_id='output-container', component_property='children'),
