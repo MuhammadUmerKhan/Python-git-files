@@ -1,3 +1,4 @@
+import xml.etree.ElementTree as etree
 import json
 import pandas as pd
 import numpy as np
@@ -26,35 +27,51 @@ import matplotlib.pyplot as plt
 
 # df.iloc[[0,1,2], 1]
 
-person = {
-    'first_name' : 'Muhammad Umer',
-    'last_name' : 'Khan',
-    'age' : 18,
-    'address': {
-        "streetAddress": "21 2nd Street",
-        "city": "Karachi",
-        "state": "Kr",
-        "postalCode": "10021-3100"
-    }
-}
-with open('person.json', 'w') as f:  # writing JSON object
-    json.dump(person, f)
+# person = {
+#     'first_name' : 'Muhammad Umer',
+#     'last_name' : 'Khan',
+#     'age' : 18,
+#     'address': {
+#         "streetAddress": "21 2nd Street",
+#         "city": "Karachi",
+#         "state": "Kr",
+#         "postalCode": "10021-3100"
+#     }
+# }
+# with open('person.json', 'w') as f:  # writing JSON object
+#     json.dump(person, f)
 
-with open('person.json', 'r') as Openfile: 
+# with open('person.json', 'r') as Openfile: 
   
-    # Reading from json file 
-    json_Object = json.load(Openfile)    
-# Serializing json  
-json_Object = json.dumps(person, indent = 4) 
+#     # Reading from json file 
+#     json_Object = json.load(Openfile)    
+# # Serializing json  
+# json_Object = json.dumps(person, indent = 4) 
   
-# Writing to sample.json 
-with open("sample.json", "w") as outfile: 
-    outfile.write(json_object) 
+# # Writing to sample.json 
+# with open("sample.json", "w") as outfile: 
+#     outfile.write(json_object) 
     
-with open('sample.json', 'r') as openfile: 
+# with open('sample.json', 'r') as openfile: 
   
-    # Reading from json file 
-    json_object = json.load(openfile) 
+#     # Reading from json file 
+#     json_object = json.load(openfile) 
   
-print(json_object) 
-print(type(json_object)) 
+# print(json_object) 
+# print(type(json_object)) 
+
+
+url = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/file_example_XLSX_10.xlsx"
+df = pd.read_excel(url)
+df.head(5)
+
+df.to_csv('sample.csv')
+
+sample_data = pd.read_csv('sample.csv')
+sample_data.head()
+sample_data.drop(columns='0', inplace=True)
+sample_data.head(9)
+
+sample_data.columns
+sample_data.describe()
+sample_data.shape
