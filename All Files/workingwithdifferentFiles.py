@@ -1,3 +1,5 @@
+from PIL import Image 
+import urllib.request
 import xml.etree.ElementTree as etree
 import json
 import pandas as pd
@@ -61,17 +63,44 @@ import matplotlib.pyplot as plt
 # print(type(json_object)) 
 
 
-url = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/file_example_XLSX_10.xlsx"
-df = pd.read_excel(url)
-df.head(5)
+# url = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/file_example_XLSX_10.xlsx"
+# df = pd.read_excel(url)
+# df.head(5)
 
-df.to_csv('sample.csv')
+# df.to_csv('sample.csv')
 
-sample_data = pd.read_csv('sample.csv')
-sample_data.head()
-sample_data.drop(columns='0', inplace=True)
-sample_data.head(9)
+# sample_data = pd.read_csv('sample.csv')
+# sample_data.head()
+# sample_data.drop(columns='0', inplace=True)
+# sample_data.head(9)
 
-sample_data.columns
-sample_data.describe()
-sample_data.shape
+# sample_data.columns
+# sample_data.describe()
+# sample_data.shape
+
+# urllib.request.urlretrieve("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg", "dog.jpg")
+# img = Image.open('dog.jpg') 
+  
+# Output Images 
+# display(img)
+
+path = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/diabetes.csv"
+
+df = pd.read_csv(path)
+df.head(10)
+df.tail(10)
+
+df.shape
+df.info()
+df.describe(include='all')
+df.to_csv('Diabets.csv', index=False)
+df = pd.read_csv('Diabets.csv')
+df.head()
+
+missData = df.isnull()
+df.notnull()
+
+for column in missData.columns.values.tolist():
+    print(column)
+    print (missData[column].value_counts())
+    print("")    
