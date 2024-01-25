@@ -96,7 +96,7 @@ bar_xdata = bar_data['DestState']
 bar_ydata = bar_data['Flights']
 fig = px.bar(x=bar_xdata, y=bar_ydata, title=' Total number of flights to the destination state split by reporting air')
 fig.show()
-
+    
 # Histogram
 df_airline['ArrDelay'] = df_airline['ArrDelay'].fillna(0)
 hist_data = df_airline['ArrDelay']
