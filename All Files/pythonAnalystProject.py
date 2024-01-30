@@ -116,6 +116,5 @@ plt.show()
 correlation_matrix = df_numerized.corr(method='pearson')
 corr_pairs = correlation_matrix.unstack()
 sorted_pairs = corr_pairs.sort_values()
-
 high_corr = sorted_pairs[(sorted_pairs) > 0.5]
 high_corr
