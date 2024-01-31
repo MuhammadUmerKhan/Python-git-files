@@ -132,7 +132,8 @@ plt.show()
 
 # Population Growth Over Time:
 world_pop = df.groupby('Continent')['World Population Percentage'].sum().reset_index()
-fig = px.bar(x=world_pop['Continent'], y=world_pop['World Population Percentage'])
+fig = px.bar(x=world_pop['Continent'], 
+             y=world_pop['World Population Percentage'])
 fig.update_layout(xaxis_title = "Continent", yaxis_title = "World Population -Percentage", 
                   title="World Population Percentage according to continents")
 fig.show()
