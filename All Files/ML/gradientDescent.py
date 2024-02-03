@@ -66,3 +66,6 @@ if __name__ == '__main__':
     # print("Using gradient descent function: Coef {} Intercept {}".format(m, b))
     m_sklearn, b_sklearn = test_score()
     # print("Using sklearn: Coef {} Intercept {}".format(m_sklearn,b_sklearn))
+    
+df = pd.read_csv("C:\DATA SCIENCE\Python-git-files\All Files\ChurnData.csv")
+df
