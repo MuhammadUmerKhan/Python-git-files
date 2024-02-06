@@ -1,3 +1,5 @@
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OneHotEncoder
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
@@ -72,3 +74,8 @@ df5.to_csv("heart_No_Outlier.csv", index=False)
 df = pd.read_csv("heart_No_Outlier.csv")
 df.head()
 df.shape
+df.describe()
+df.info()
+df.dtypes
+df.columns
+df.head()
