@@ -1,3 +1,4 @@
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.calibration import cross_val_predict
 from sklearn.model_selection import StratifiedKFold, cross_val_score
 from sklearn.model_selection import KFold
@@ -12,6 +13,7 @@ from sklearn.svm import SVC
 from sklearn.datasets import load_digits, load_iris
 from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
+from sqlalchemy import column
 
 digits = load_digits()
 
@@ -85,3 +87,23 @@ np.average(score2)
 
 score3 = cross_val_score(SVC(gamma='auto'), X, Y, cv=3)
 np.average(score3)
+
+# ----------------------
+iris = load_iris()
+dir(iris)
+df_iris = pd.DataFrame(iris.data,columns = iris.feature_names)
+df_iris['target'] = iris.target
+df_iris['flower_names'] = df_iris['target'].apply(lambda x: iris.target_names[x])
+df_iris.head()
+X_iris = df_iris.drop(columns=['target', 'flower_names'])
+Y_iris = df_iris['target']
+
+score_log = cross_val_score(LogisticRegression(solver='liblinear', multi_class='ovr'), X_iris, Y_iris, cv=10)
+score_svm = cross_val_score(SVC(gamma='auto'), X_iris, Y_iris, cv=10)
+score_randomForest = cross_val_score(RandomForestClassifier(n_estimators=40), X_iris, Y_iris, cv=10)
+score_dTree = cross_val_score(DecisionTreeClassifier(), X_iris, Y_iris, cv=10)
+
+np.average(score_log)
+np.average(score_dTree)
+np.average(score_svm)
+np.average(score_randomForest)
