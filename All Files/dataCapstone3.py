@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv("dataset_part_1.csv")
-df.head(10)
-
+df = pd.read_csv("dataset_part_3.csv")
+df.head(3)
+df['BoosterVersion'].unique()
 
 df.isnull().sum()
 # Identify and calculate the percentage of the missing values in each attribute
